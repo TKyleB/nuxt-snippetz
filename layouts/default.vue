@@ -8,21 +8,25 @@
                         Snippetz
                     </ULink>
                     <div class="flex pt-2 mx-2">
-                        <UInput color="white" variant="outline" placeholder="Search..." class="" size="xs" :ui="{ icon: { trailing: { pointer: '' } } }">
-                            <template #trailing>
-                                 <UButton icon="i-heroicons-magnifying-glass" color="gray" variant="link" :padded="false"  />
-                            </template>
-                        </UInput>
-                    <UButton to="/all" variant="link" active-class="underline" color="gray">
-                        All Snippets
-                    </UButton>
+                        <form @submit.prevent="onSearchSubmit">
+                            <UInput v-model="searchTerms" color="white" variant="outline" placeholder="Search..."
+                                class="" size="xs" :ui="{ icon: { trailing: { pointer: '' } } }">
+                                <template #trailing>
+                                    <UButton icon="i-heroicons-magnifying-glass" color="gray" :padded="false"
+                                        type="submit" />
+                                </template>
+                            </UInput>
+                        </form>
+                        <UButton to="/all" variant="link" active-class="underline" color="gray">
+                            All Snippets
+                        </UButton>
                     </div>
                 </div>
                 <template v-if="status === 'unauthenticated'">
-                    <UHorizontalNavigation :links="signedOutLinks" :ui="{wrapper: ''}" />
+                    <UHorizontalNavigation :links="signedOutLinks" :ui="{ wrapper: '' }" />
                 </template>
                 <template v-if="status === 'authenticated'">
-                    <UHorizontalNavigation :links="signedInLinks" :ui="{wrapper: ''}" />
+                    <UHorizontalNavigation :links="signedInLinks" :ui="{ wrapper: '' }" />
                 </template>
             </div>
         </header>
@@ -30,38 +34,46 @@
         <UNotifications />
         <slot />
     </div>
-    
+
 </template>
 
 <script setup lang="ts">
-
+const route = useRoute()
 const toast = useToast()
 const { signOut, status, data, token } = useAuth()
+let searchTerms = ref("")
 
 const signedOutLinks = [{
     label: "Login",
     to: "/login"
 },
-    {
-        label: "Register",
-        to: "/register"
-    }
+{
+    label: "Register",
+    to: "/register"
+}
 ]
 const signedInLinks = [
-{
+    {
         label: "Create Snippet",
         icon: "material-symbols:add",
         to: "/"
-},
-{
-    label: "Profile",
-    to: `/snippets/${data.value?.username}`
-},
-{
-    label: "Logout",
-    click: () => {signOut({callbackUrl: "/login"})
-                toast.add({title: "You have been logged out. Goodbye!", color: "green"})}
-}]
+    },
+    {
+        label: "Profile",
+        to: `/snippets/${data.value?.username}`
+    },
+    {
+        label: "Logout",
+        click: () => {
+            signOut({ callbackUrl: "/login" })
+            toast.add({ title: "You have been logged out. Goodbye!", color: "green" })
+        }
+    }]
+
+function onSearchSubmit() {
+    navigateTo(`/search?q=${searchTerms.value}`)
+    searchTerms.value = ""
+}
 
 </script>
 
