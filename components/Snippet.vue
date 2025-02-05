@@ -27,8 +27,8 @@
       <div class="flex justify-between">
         <div>{{ props.desc }}</div>
         <div v-if="status == 'authenticated'">
-          <UTooltip text="Delete">
-            <UButton @click="handleDeleteButton" v-if="data.username == props.username" size="sm" variant="ghost"
+          <UTooltip text="Delete" v-if="data?.username == props.username">
+            <UButton @click="handleDeleteButton" size="sm" variant="ghost"
               icon="material-symbols:delete-outline" color="red">
             </UButton>
           </UTooltip>
@@ -40,6 +40,10 @@
 
 <script setup lang="ts">
 const toast = useToast()
+
+const config = useRuntimeConfig()
+const apiBase = config.public.baseURL
+
 const { status, data, token } = useAuth()
 const props = defineProps({
   username: String,
@@ -61,7 +65,7 @@ function copyCode(text: string | undefined) {
 }
 async function handleDeleteButton() {
   try {
-    const res = await $fetch(`http://localhost:8080/api/snippets/${props.id}`, {
+    const res = await $fetch(`${apiBase}/api/snippets/${props.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
