@@ -14,11 +14,15 @@
 <script setup lang="ts">
 const page = computed(() => (route.query.offset ? Number(route.query.offset) / 5 + 1 : 1))
 const route = useRoute()
+
+const config = useRuntimeConfig()
+const apiBase = config.public.baseURL
+
 definePageMeta({
     auth: false
 })
 
-const { data: snippets, error } = useFetch<SnippetsResponse>(() => `http://localhost:8080/api/snippets?username=${route.params.username}&offset=${(page.value - 1) * 5}`)
+const { data: snippets, error } = useFetch<SnippetsResponse>(() => `${apiBase}/api/snippets?username=${route.params.username}&offset=${(page.value - 1) * 5}`)
 </script>
 
 <style lang="scss" scoped></style>

@@ -16,11 +16,14 @@
 <script setup>
 const route = useRoute()
 
+const config = useRuntimeConfig()
+const apiBase = config.public.baseURL
+
 definePageMeta({
     auth: false
 })
 
-const { data: s } = useFetch(() => `http://localhost:8080/api/snippets/${route.params.snippet}`)
+const { data: s } = useFetch(() => `${apiBase}/api/snippets/${route.params.snippet}`)
 </script>
 
 <style lang="scss" scoped></style>

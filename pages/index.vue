@@ -33,13 +33,17 @@
 
 <script setup lang="ts">
 const { token } = useAuth()
+
+const config = useRuntimeConfig()
+const apiBase = config.public.baseURL
+
 definePageMeta({
     auth: {
         unauthenticatedOnly: false,
         navigateUnauthenticatedTo: '/all'
     }
 })
-const languages = ["Python", "Go", "Javascript", "SQL"]
+const languages = ["Go", "Python", "Java", "Javascript", "SQL", "Text"]
 const state = {
     desc: "",
     language: "",
@@ -58,7 +62,7 @@ async function handleSubmit() {
     return
   }
   try{
-  const res = await $fetch<Snippet>("http://localhost:8080/api/snippets", {
+  const res = await $fetch<Snippet>(`${apiBase}/api/snippets`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

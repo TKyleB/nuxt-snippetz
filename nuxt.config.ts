@@ -16,11 +16,12 @@ export default defineNuxtConfig({
     defaultTheme: "slack-dark"
   },
   runtimeConfig: {
-    baseURL: 'NUXT_BASE_URL'
+    public: {
+      baseURL: process.env.NUXT_BASE_URL
+    }
   },
   auth: {
     originEnvKey: "NUXT_BASE_URL",
-    baseURL: "NUXT_BASE_URL",
     globalAppMiddleware: true,
     provider: {
       type: 'local',
