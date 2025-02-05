@@ -52,7 +52,7 @@ const signedOutLinks = [{
     to: "/register"
 }
 ]
-const signedInLinks = [
+const signedInLinks = computed(() => [
     {
         label: "Create Snippet",
         icon: "material-symbols:add",
@@ -68,7 +68,7 @@ const signedInLinks = [
             signOut({ callbackUrl: "/login" })
             toast.add({ title: "You have been logged out. Goodbye!", color: "green" })
         }
-    }]
+    }])
 
 function onSearchSubmit() {
     navigateTo(`/search?q=${searchTerms.value}`)
