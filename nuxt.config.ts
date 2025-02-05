@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   alias: {
     '@types': '/<rootDir>/types'
   },
+  icon: {
+    provider: 'iconify'
+  },
   modules: [
     '@nuxt/ui',
     '@sidebase/nuxt-auth',
