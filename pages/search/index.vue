@@ -11,6 +11,9 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: "Search"
+})
 const page = computed(() => (route.query.offset ? Number(route.query.offset) / 5 + 1 : 1))
 const route = useRoute()
 

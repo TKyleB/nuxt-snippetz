@@ -22,8 +22,10 @@ const apiBase = config.public.apiBase
 definePageMeta({
     auth: false
 })
-
-const { data: s } = useFetch(`${apiBase}/api/snippets/${route.params.snippet}`)
+const { data: s } = await useFetch(`${apiBase}/api/snippets/${route.params.snippet}`)
+useHead({
+    title: () => s.snippet_title
+})
 </script>
 
 <style lang="scss" scoped></style>

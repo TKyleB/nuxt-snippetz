@@ -38,6 +38,11 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `Snippetz - ${titleChunk}` : 'Snippetz';
+  }
+})
 const route = useRoute()
 const toast = useToast()
 const { signOut, status, data, token } = useAuth()
@@ -59,7 +64,7 @@ const signedInLinks = computed(() => [
         to: "/"
     },
     {
-        label: "Profile",
+        label: "My Snippets",
         to: `/snippets/${data.value?.username}`
     },
     {

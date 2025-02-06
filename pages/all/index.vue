@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: "All"
+})
 const route = useRoute()
 const page = computed(() => (route.query.offset ? Number(route.query.offset) / 5 + 1 : 1))
 const config = useRuntimeConfig()

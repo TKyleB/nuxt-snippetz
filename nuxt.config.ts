@@ -8,6 +8,11 @@ export default defineNuxtConfig({
       enabled: true
     }
   },
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'images/x-icon', href: 'favicon.png' }]
+    }
+  },
   alias: {
     '@types': '/<rootDir>/types'
   },
@@ -27,7 +32,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: "",
-
     }
   },
   auth: {

@@ -15,6 +15,10 @@
 const page = computed(() => (route.query.offset ? Number(route.query.offset) / 5 + 1 : 1))
 const route = useRoute()
 
+useHead({
+    title: String(route.params.username)
+})
+
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase
 

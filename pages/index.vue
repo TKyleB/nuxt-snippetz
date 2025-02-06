@@ -32,8 +32,8 @@
 </template>
 
 <script setup lang="ts">
-const { token } = useAuth()
 
+const { token } = useAuth()
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase
 

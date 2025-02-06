@@ -26,7 +26,9 @@
 </template>
 
 <script setup lang="ts">
-
+useHead({
+    title: "Login"
+})
 const toast = useToast()
 definePageMeta({
     auth: {

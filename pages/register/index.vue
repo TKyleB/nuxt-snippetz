@@ -23,6 +23,9 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: "Register"
+})
 import type { FormError, FormSubmitEvent } from '#ui/types'
 const toast = useToast()
 const { signUp } = useAuth()
