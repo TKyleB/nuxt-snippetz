@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     }
   },
   auth: {
-    originEnvKey: "NUXT_BASE_URL",
+    originEnvKey: "NUXT_PUBLIC_API_BASE",
     globalAppMiddleware: true,
     provider: {
       type: 'local',
