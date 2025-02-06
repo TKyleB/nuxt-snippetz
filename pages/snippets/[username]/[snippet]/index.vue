@@ -17,7 +17,7 @@
 const route = useRoute()
 
 const config = useRuntimeConfig()
-const apiBase = config.public.baseURL
+const apiBase = config.public.apiBase
 
 definePageMeta({
     auth: false

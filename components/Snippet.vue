@@ -42,7 +42,7 @@
 const toast = useToast()
 
 const config = useRuntimeConfig()
-const apiBase = config.public.baseURL
+const apiBase = config.public.apiBase
 
 const { status, data, token } = useAuth()
 const props = defineProps({
