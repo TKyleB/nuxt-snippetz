@@ -1,6 +1,6 @@
 <template>
   <UCard class="w-full mt-5"
-    :ui="{ body: { padding: 'sm:p-3 p-0', background: 'bg-slack-dark' }, header: { padding: 'sm:px-3 py-2' }, footer: { padding: 'sm:px-3 py-2' } }">
+    :ui="{ body: { padding: 'sm:p-3 p-0', background: 'bg-slack-dark', }, header: { padding: 'sm:px-3 py-2' }, footer: { padding: 'sm:px-3 py-2' } }">
     <template #header>
       <div class="flex justify-between">
         <div>
@@ -22,7 +22,7 @@
         </UTooltip>
       </div>
     </template>
-    <Shiki :lang:any="props.language" :code="props.code" :unwrap="false" />
+    <Shiki :lang:any="props.language" :code="props.code" :unwrap="false" class="code-container"/>
     <template #footer>
       <div class="flex justify-between">
         <div>{{ props.desc }}</div>
@@ -82,4 +82,9 @@ async function handleDeleteButton() {
 
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.code-container {
+  overflow: auto;
+}
+
+</style>
