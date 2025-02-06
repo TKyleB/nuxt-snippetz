@@ -23,7 +23,7 @@ definePageMeta({
     auth: false
 })
 
-const { data: s } = useFetch(() => `${apiBase}/api/snippets/${route.params.snippet}`)
+const { data: s } = useFetch(`${apiBase}/api/snippets/${route.params.snippet}`)
 </script>
 
 <style lang="scss" scoped></style>

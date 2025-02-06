@@ -9,7 +9,8 @@
                     :to="(page) => ({ path: `${route.path}`, query: { offset: (page - 1) * 5 } })"
                     :prev-button="{ icon: 'i-heroicons-arrow-small-left-20-solid', label: 'Prev', color: 'gray' }"
                     :next-button="{ icon: 'i-heroicons-arrow-small-right-20-solid', label: 'Next', color: 'gray' }"
-                    :model-value="props.page" :total="props.count ?? 0" />
+                    :model-value="props.page" :total="props.count ?? 0"
+                    />
             </div>
         </template>
 

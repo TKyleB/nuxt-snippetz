@@ -2,7 +2,7 @@
     <div>
         <h2 class="text-2xl font-bold pb-2">{{ route.params.username }}'s Snippets</h2>
         <hr>
-        <Snippets v-if="!error" :next="snippets?.next ?? ''" :previous="snippets?.previous ?? ''"
+        <Snippets :key="page" v-if="!error" :next="snippets?.next ?? ''" :previous="snippets?.previous ?? ''"
             :count="Number(snippets?.count) ?? 0" :results="snippets?.results ?? []" :page="page" />
 
         <template v-else>
