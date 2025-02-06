@@ -84,7 +84,9 @@ async function handleDeleteButton() {
 
 <style scoped>
 .code-container {
-  overflow: auto;
+  overflow-x: auto;
+  max-height: 500px;
+  background-color: #222222;
 }
 
 </style>
