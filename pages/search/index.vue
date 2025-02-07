@@ -2,8 +2,13 @@
     <div>
         <h2 class="text-2xl font-bold pb-2">Search</h2>
         <hr>
-        <Snippets v-if="!error" :next="snippets?.next ?? ''" :previous="snippets?.previous ?? ''"
-            :count="Number(snippets?.count) ?? 0" :results="snippets?.results ?? []" :page="page" />
+        <Snippets v-if="!error" :next="snippets?.next ?? ''" 
+        :previous="snippets?.previous ?? ''"
+        :count="Number(snippets?.count) ?? 0" 
+        :results="snippets?.results ?? []" 
+        :page="page"
+        :truncate="true"
+        />
         <template v-else>
             <h2>No snippets found</h2>
         </template>

@@ -4,7 +4,12 @@
             <h2 class="text-2xl font-bold pb-2">{{ s.snippet_title }}</h2>
             <hr>
             <Snippet :key="s.id" :title="s.snippet_title" :language="s.language" :code="s.snippet_text"
-                :username="s.username" :created-at="s.created_at" :desc="s.snippet_desc" :id="s.id">
+                :username="s.username" 
+                :created-at="s.created_at" 
+                :desc="s.snippet_desc" 
+                :id="s.id"
+                :truncate="false"
+                >
             </Snippet>
         </template>
         <template v-else>

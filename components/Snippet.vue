@@ -5,12 +5,14 @@
       <div class="flex justify-between">
         <div>
           <div>
-            <ULink inactive-class="text-primary" active-class="text-green-500"
-              :to="'/snippets/' + props.username + '/' + props.id">{{ props.title }}</ULink>/<ULink
-              active-class="text-green-500" inactive-class="text-primary" :to="'/snippets/' + props.username">{{
-                props.username }}</ULink>
+            <ULink active-class="text-green-500" inactive-class="text-primary" :to="'/snippets/' + props.username">
+              {{props.username }}
+            </ULink>
+             / 
+             <ULink inactive-class="text-primary" active-class="text-green-500" :to="'/snippets/' + props.username + '/' + props.id">
+              {{ props.title + generateFileExtension(props.language) }}
+            </ULink>
           </div>
-          <div class="text-sm">Language: {{ props.language }}</div>
           <div class="text-xs">Created {{ new Date(props.createdAt).toLocaleString("en-US", {
             day: "numeric", month:
               "long", year: "numeric"
@@ -22,7 +24,8 @@
         </UTooltip>
       </div>
     </template>
-    <Shiki :lang:any="props.language" :code="props.code" :unwrap="false" class="code-container"/>
+    <Shiki v-if="props.truncate" :lang:any="props.language" :code="props.code?.split('\n').slice(0, 10).toString()" :unwrap="false" class="code-container"/>
+    <Shiki v-else :lang:any="props.language" :code="props.code" :unwrap="false" class="code-container"/>
     <template #footer>
       <div class="flex justify-between">
         <div>{{ props.desc }}</div>
@@ -50,9 +53,10 @@ const props = defineProps({
   language: { type: String, required: true },
   code: String,
   createdAt: { type: String, required: true },
-  title: String,
+  title: {type: String, required: true},
   desc: String,
-  id: { type: String, required: true }
+  id: { type: String, required: true },
+  truncate: {type: Boolean, required: true}
 
 })
 
@@ -78,6 +82,23 @@ async function handleDeleteButton() {
     console.log(e)
   }
 
+}
+
+function generateFileExtension(language: string): String {
+  switch(language) {
+    case "javascript":
+      return ".js"
+    case "python":
+      return ".py"
+    case "go":
+      return ".go"
+    case "sql":
+      return ".sql"
+    case "text":
+      return ".txt"
+    default:
+      return ""
+  }
 }
 
 </script>

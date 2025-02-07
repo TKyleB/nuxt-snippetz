@@ -2,8 +2,13 @@
     <div>
         <template v-if="results && (count != null ? count > 0 : false)">
             <Snippet v-for="s in results" :key="s?.id" :title="s.snippet_title" :language="s.language"
-                :code="s.snippet_text" :username="s.username" :created-at="s.created_at" :desc="s.snippet_desc"
-                :id="s.id" />
+                :code="s.snippet_text" 
+                :username="s.username" 
+                :created-at="s.created_at" 
+                :desc="s.snippet_desc"
+                :id="s.id"
+                :truncate="props.truncate"
+                 />
             <div class="flex justify-center py-2">
                 <UPagination :page-count="5" :max="5"
                     :to="(page) => ({ path: `${route.path}`, query: { offset: (page - 1) * 5 } })"
@@ -28,6 +33,7 @@ const props = defineProps<{
     next: string
     previous: string
     page: number
+    truncate: boolean
 }>()
 
 
