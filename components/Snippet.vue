@@ -24,7 +24,7 @@
         </UTooltip>
       </div>
     </template>
-    <Shiki v-if="props.truncate" :lang:any="props.language" :code="props.code?.split('\n').slice(0, 10).toString()" :unwrap="false" class="code-container"/>
+    <Shiki v-if="props.truncate" :lang:any="props.language" :code="props.code?.split('\n').join('')" :unwrap="false" class="code-container"/>
     <Shiki v-else :lang:any="props.language" :code="props.code" :unwrap="false" class="code-container"/>
     <template #footer>
       <div class="flex justify-between">
