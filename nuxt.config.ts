@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'images/x-icon', href: 'favicon.png' }]
+      link: [{ rel: 'icon', type: 'images/x-icon', href: '/favicon.png' }]
     }
   },
   alias: {
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   ],
   shiki: {
     bundledLangs: ["go", "sql"],
-    defaultTheme: "slack-dark"
+    defaultTheme: "slack-dark",
   },
   runtimeConfig: {
     public: {
