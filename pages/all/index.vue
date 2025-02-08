@@ -4,7 +4,7 @@
         <hr>
         <Snippets v-if="!error" :next="snippets?.next ?? ''" :previous="snippets?.previous ?? ''"
             :count="Number(snippets?.count) ?? 0" 
-            :results="snippets?.results ?? []" 
+            :results="snippets?.results ?? {snippets: [], languages: {}}" 
             :page="page"
             :truncate="true"
             />
