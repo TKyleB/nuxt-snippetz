@@ -1,7 +1,7 @@
 type Snippet = {
     id: string,
-    created_at: string
-    updated_at: string
+    created_at: string,
+    updated_at: string,
     user_id: string,
     username: string,
     language: string,
@@ -9,11 +9,14 @@ type Snippet = {
     snippet_desc: string,
     snippet_title: string
 }
-interface SnippetsResponse {
-    count?: number
-    next?: string
-    previous?: string
-    results?: Snippet[]
+type SnippetsResponse = {
+    count: number
+    next: string
+    previous: string
+    results: {
+        snippets: Snippet[],
+        languages: Record<string, number>
+    }
 }
 
 
